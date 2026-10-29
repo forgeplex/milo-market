@@ -8,7 +8,8 @@
         "source": "local",
         "path": "plugins/delivery-check"
       },
-      "category": "productivity"
+      "category": "productivity",
+      "version": "0.1.1"
     }
   ],
   "categories": [

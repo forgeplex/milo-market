@@ -2,6 +2,8 @@
 name: task-handoff
 description: 把已完成的工作整理为有证据、有限制说明和下一步的交接记录。用于用户要求交接或接手任务时。
 license: MIT
+metadata:
+  version: "0.1.0"
 ---
 
 # 任务交接

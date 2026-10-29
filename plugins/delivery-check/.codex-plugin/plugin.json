@@ -1,6 +1,6 @@
 {
   "name": "delivery-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "交付前核对目标、证据与限制。",
   "author": {
     "name": "Milo"

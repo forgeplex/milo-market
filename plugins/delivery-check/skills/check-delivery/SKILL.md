@@ -2,6 +2,8 @@
 name: check-delivery
 description: 检查交付物是否满足用户的原始目标与验收条件，并报告未验证的结果。用于任务交付前的最后核对。
 license: MIT
+metadata:
+  version: "0.1.0"
 ---
 
 # 交付检查

@@ -45,7 +45,8 @@
           "name",
           "description",
           "category",
-          "source"
+          "source",
+          "version"
         ],
         "properties": {
           "name": {
@@ -62,6 +63,10 @@
           },
           "source": {
             "type": "object"
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"
           }
         }
       }

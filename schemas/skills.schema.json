@@ -19,7 +19,8 @@
           "description",
           "source",
           "license",
-          "requires"
+          "requires",
+          "version"
         ],
         "properties": {
           "id": {
@@ -77,6 +78,10 @@
                 }
               }
             }
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"
           }
         }
       }

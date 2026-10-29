@@ -10,3 +10,8 @@
 在 `.agents/plugins/marketplace.json` 的 `categories` 中维护分类。每项包含稳定的 `id`、显示名称 `name` 和说明 `description`；列表顺序就是页面分组顺序。
 每个插件条目用 `category` 引用一个分类 ID。例如 `delivery-check` 使用 `productivity`。CI 拒绝重复 ID、缺少分类和未知引用。
 新增分类时先加注册项，再为插件指定分类。修改显示名称不需要修改分类 ID。分类不改变插件路径、内容摘要或已安装任务。页面不显示没有插件的分类。
+
+## 版本号
+
+插件清单的 `version` 是发布版本；市场条目的 `version` 必须与它一致。独立 Skill 在 `SKILL.md` 的 YAML 首部用 `metadata.version` 声明版本，目录条目的 `version` 必须与它一致。插件内 Skill 也要声明自己的版本。
+版本采用 `主版本.次版本.修订版本`，可带预发布或构建后缀。内容变更时更新对应发布版本；已发布的固定提交保留。版本号供用户识别，安装仍固定完整 SHA 和包摘要。旧内容缺少版本时，客户端显示“未标版本”。
