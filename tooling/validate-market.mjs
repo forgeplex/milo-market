@@ -4,6 +4,7 @@ import { resolve, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import Ajv from "ajv/dist/2020.js";
 import YAML from "yaml";
+import { validateCategories } from "./categories.mjs";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const json = async path => JSON.parse(await readFile(resolve(root, path), "utf8"));
 const skills = await json("catalog/skills.json");
@@ -31,7 +32,9 @@ for(const entry of skills.skills) {
  else await skill(entry.source.path,entry.description);
 }
 const market=await json(".agents/plugins/marketplace.json");
-assert.equal(market.name,"milo-official");
+const validateMarket = new Ajv().compile(await json("schemas/marketplace.schema.json"));
+assert(validateMarket(market), JSON.stringify(validateMarket.errors));
+validateCategories(market.categories, market.plugins);
 for(const entry of market.plugins) {
  assert(!seen.has(`plugin:${entry.name}`)); seen.add(`plugin:${entry.name}`);
  if(entry.source.source!=="local") { assert(/^[a-f0-9]{40}$/.test(entry.source.sha)); continue; }

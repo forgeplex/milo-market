@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tooling/validate-market.mjs"
+    "test": "node tooling/validate-market.mjs && node --test tooling/categories.test.mjs"
   },
   "devDependencies": {
     "ajv": "^8.20.0",

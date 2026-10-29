@@ -7,7 +7,35 @@
       "source": {
         "source": "local",
         "path": "plugins/delivery-check"
-      }
+      },
+      "category": "productivity"
+    }
+  ],
+  "categories": [
+    {
+      "id": "productivity",
+      "name": "效率与协作",
+      "description": "任务交付、交接与协作。"
+    },
+    {
+      "id": "development",
+      "name": "开发工具",
+      "description": "开发、调试与代码检查。"
+    },
+    {
+      "id": "documents",
+      "name": "文档与数据",
+      "description": "文档、表格和数据处理。"
+    },
+    {
+      "id": "media",
+      "name": "媒体创作",
+      "description": "图片、音频和视频制作。"
+    },
+    {
+      "id": "integrations",
+      "name": "服务连接",
+      "description": "连接外部服务。"
     }
   ]
 }
