@@ -1,0 +1,13 @@
+{
+  "name": "delivery-check",
+  "version": "0.1.0",
+  "description": "交付前核对目标、证据与限制。",
+  "author": {
+    "name": "Milo"
+  },
+  "skills": "./skills",
+  "interface": {
+    "displayName": "交付检查",
+    "shortDescription": "按验收条件检查实际交付结果"
+  }
+}

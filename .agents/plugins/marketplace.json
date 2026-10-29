@@ -1,0 +1,13 @@
+{
+  "name": "milo-official",
+  "plugins": [
+    {
+      "name": "delivery-check",
+      "description": "交付前核对目标、证据与限制。",
+      "source": {
+        "source": "local",
+        "path": "plugins/delivery-check"
+      }
+    }
+  ]
+}
