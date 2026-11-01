@@ -13,13 +13,13 @@
     },
     {
       "name": "bitwarden",
-      "description": "通过连接向导登录并使用 Bitwarden 官方 MCP。",
+      "description": "通过连接向导登录，以官方 MCP 读取、创建和修改保险库项目。",
       "source": {
         "source": "local",
         "path": "plugins/bitwarden"
       },
       "category": "integrations",
-      "version": "0.3.1"
+      "version": "0.3.2"
     }
   ],
   "categories": [
