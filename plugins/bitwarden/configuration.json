@@ -1,0 +1,35 @@
+{
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "description": "填写已完成 CLI 登录的状态目录和解锁会话密钥。不要填写 Bitwarden 主密码。",
+    "required": [
+      "cliStateDirectory",
+      "sessionKey"
+    ],
+    "properties": {
+      "cliStateDirectory": {
+        "type": "string",
+        "title": "CLI 状态目录",
+        "description": "Milo 执行环境中，本账户已登录的 Bitwarden CLI 数据目录。",
+        "default": "/var/lib/milo/workspaces/.bitwarden-mcp-local-user/cli",
+        "minLength": 1
+      },
+      "sessionKey": {
+        "type": "string",
+        "title": "解锁会话密钥",
+        "description": "使用 bw unlock --raw 得到的 BW_SESSION。私密保存，留空保留；会话失效后需重新解锁。",
+        "writeOnly": true,
+        "minLength": 1
+      }
+    }
+  },
+  "mcp": {
+    "bitwarden": {
+      "env": {
+        "BITWARDENCLI_APPDATA_DIR": "cliStateDirectory",
+        "BW_SESSION": "sessionKey"
+      }
+    }
+  }
+}

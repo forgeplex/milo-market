@@ -1,7 +1,7 @@
 {
   "name": "bitwarden",
-  "version": "0.1.1",
-  "description": "通过 Bitwarden 官方 MCP 读取网站登录信息；需要单独连接并解锁保险库。",
+  "version": "0.2.0",
+  "description": "通过官方 MCP 使用保险库；安装时配置 CLI 状态目录和解锁会话密钥。",
   "author": {
     "name": "Milo"
   },
@@ -10,5 +10,6 @@
   "interface": {
     "displayName": "Bitwarden",
     "shortDescription": "官方 MCP · 网站登录与保险库工具"
-  }
+  },
+  "configuration": "./configuration.json"
 }

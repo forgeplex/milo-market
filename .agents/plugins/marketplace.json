@@ -13,13 +13,13 @@
     },
     {
       "name": "bitwarden",
-      "description": "通过 Bitwarden 官方 MCP 读取网站登录信息；需要单独连接并解锁保险库。",
+      "description": "官方 MCP；在插件表单中配置解锁会话。",
       "source": {
         "source": "local",
         "path": "plugins/bitwarden"
       },
       "category": "integrations",
-      "version": "0.1.1"
+      "version": "0.2.0"
     }
   ],
   "categories": [
