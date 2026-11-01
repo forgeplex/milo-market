@@ -13,13 +13,13 @@
     },
     {
       "name": "bitwarden",
-      "description": "官方 MCP；在插件表单中配置解锁会话。",
+      "description": "通过连接向导登录并使用 Bitwarden 官方 MCP。",
       "source": {
         "source": "local",
         "path": "plugins/bitwarden"
       },
       "category": "integrations",
-      "version": "0.2.1"
+      "version": "0.3.0"
     }
   ],
   "categories": [
