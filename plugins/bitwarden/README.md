@@ -1,28 +1,23 @@
-# Bitwarden 0.2.1
+# Bitwarden 0.3.0
 
-通过官方 `@bitwarden/mcp-server@2026.7.0` 和 `@bitwarden/cli@2026.10.1` 使用网站登录项。需要支持插件 configuration schema 的 Milo 版本。旧版本不能使用这套配置表单。
+使用官方 `@bitwarden/mcp-server@2026.7.0` 和 `@bitwarden/cli@2026.10.1`。需要支持插件连接向导的 Milo 服务。
 
 ```text
-解锁密钥表单 → 加密 MCP 配置 → 官方 MCP → 官方 CLI → Bitwarden
+安装插件 → 连接账户 → 邮箱与主密码 → 必要的验证码 → 已连接
+                       ↓ 私密提交
+                 独立 CLI 登录目录 → 加密会话 → 官方 MCP
 ```
 
-## 安装前
+安装后打开插件详情，点击“连接账户”。填写 Bitwarden 邮箱和主密码。账户启用两步登录或新设备邮件验证时，按提示输入验证码。两步登录方式：0 是验证器，1 是邮件，3 是 YubiKey OTP。此版本连接唯一的生产服务 `https://bitwarden.pleamon.com`。
 
-管理员必须准备 Node.js 22、锁定依赖和本账户 CLI 登录。此版本的 `.mcp.json` 使用 Milo staging 已准备的 `/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.2.1` 运行目录。其他部署必须按其实际路径制作对应包，不能直接复用这些路径。
+Milo 自动保存会话。用户不需要运行 CLI、复制会话密钥或配置目录。会话失效时点击“重新连接”。取消或登录失败会保留原连接。重连成功后，新任务使用新连接；已接受的任务保留原配置。
 
-Bitwarden 使用单个生产服务 `https://bitwarden.pleamon.com`。CLI 必须先配置此地址并完成登录。浏览器扩展的登录状态不会自动传给 CLI。状态目录属于一个 Milo 账户。当前包只用于已准备的 staging 测试账户；管理员必须维持该账户的 stdio 许可限制，不能把同一状态目录分配给其他账户。
+主密码和验证码会临时经过 Milo 服务和登录进程，不写入数据库、文件或日志，不发送给 Agent。解锁会话由 Milo 加密保存。CLI 缓存保存在当前 Milo 账户的私有目录，每次重连使用新目录。浏览器中的登录状态不会自动传给 CLI。本方案使用 CLI 登录，不提供个人保险库 OAuth。SSO、CAPTCHA 和安全密钥 WebAuthn 不在本次支持范围。
 
-## 安装与配置
+管理员先准备 Node.js 22、此目录锁定的依赖和 `launch-configured.mjs`。本部署使用 `/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.3.0`。目录由宿主管理，不是用户表单字段。Milo 的 stdio 用户许可仍需由管理员授予。每个 Milo 账户有独立登录状态；此配置不提供同一服务 Unix 用户内的操作系统隔离。
 
-1. 安装插件时只填写 `BW_SESSION` 解锁会话密钥。不能填写主密码。
-   CLI 状态目录由插件运行环境提供，不出现在用户表单。
-2. 安装后进入插件详情，点击“检查连接”来同步工具目录。
-3. 让 Agent 调用 `status`，确认 `serverUrl` 正确且状态为 `unlocked`。
+登录成功后自动同步 MCP 工具目录。同步失败时，在详情中点击“检查连接”，无需再次登录。只开放 `status`、`sync`、`list`、`get`。凭据读取结果可以进入 Agent 上下文。本插件不保证模型看不到密码。
 
-密钥在 Milo 服务端加密保存。页面只显示“已配置”，不回显值。编辑时留空保留，点击“清除”后保存会删除该值。新配置只用于后续任务。会话失效时需重新解锁并在表单更新密钥，不要在聊天发送。
+连接处理器使用版本化私密协议；只有宿主批准的包才能执行。旧 `launch.mjs` 保留给 0.1.x 已接受任务，不能用于新向导。
 
-只开放 `status`、`sync`、`list`、`get`。安装成功和工具发现不表示保险库已解锁。官方 MCP 的凭据读取结果可进入 Agent 上下文，不能承诺模型看不到密码。
-
-`runtime/package-lock.json` 保留上游锁定版本。旧 `runtime/launch.mjs` 是 0.1.x 手动连接的兼容入口，0.2.1 的 schema 连接通过 `launch-configured.mjs` 启动官方 MCP。该入口设置 Node 搜索路径，只转发本插件所需的环境变量，不读取明文 session 文件。
-
-上游：[Bitwarden 官方 MCP](https://github.com/bitwarden/mcp-server)。
+[官方 MCP](https://github.com/bitwarden/mcp-server) · [官方 CLI](https://bitwarden.com/help/cli/)

@@ -2,15 +2,13 @@
   "schema": {
     "type": "object",
     "additionalProperties": false,
-    "description": "填写解锁会话密钥。不要填写 Bitwarden 主密码。",
-    "required": [
-      "sessionKey"
-    ],
+    "description": "通过连接向导登录 Bitwarden。主密码只用于本次登录，不会保存。",
+    "required": [],
     "properties": {
       "sessionKey": {
         "type": "string",
         "title": "解锁会话密钥",
-        "description": "使用 bw unlock --raw 得到的 BW_SESSION。私密保存，留空保留；会话失效后需重新解锁。",
+        "description": "由连接向导自动保存。用户无需填写。",
         "writeOnly": true,
         "minLength": 1
       }
@@ -20,6 +18,72 @@
     "bitwarden": {
       "env": {
         "BW_SESSION": "sessionKey"
+      }
+    }
+  },
+  "connection": {
+    "command": "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.3.0/node",
+    "env": {
+      "BW_CLI_PATH": "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.3.0/node_modules/@bitwarden/cli/build/bw.js"
+    },
+    "handler": "runtime/connect.mjs",
+    "server": "bitwarden",
+    "secret_field": "sessionKey",
+    "data_env": "BITWARDENCLI_APPDATA_DIR",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "serverUrl",
+        "email",
+        "masterPassword"
+      ],
+      "properties": {
+        "serverUrl": {
+          "type": "string",
+          "title": "Bitwarden 服务",
+          "default": "https://bitwarden.pleamon.com",
+          "enum": [
+            "https://bitwarden.pleamon.com"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "title": "邮箱",
+          "format": "email",
+          "maxLength": 254
+        },
+        "masterPassword": {
+          "type": "string",
+          "title": "主密码",
+          "writeOnly": true,
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "method": {
+          "type": "string",
+          "title": "验证方式",
+          "enum": [
+            "",
+            "0",
+            "1",
+            "3"
+          ],
+          "default": "",
+          "description": "自动选择；0：验证器，1：邮件，3：YubiKey OTP。"
+        },
+        "code": {
+          "type": "string",
+          "title": "两步登录验证码",
+          "writeOnly": true,
+          "maxLength": 128
+        },
+        "deviceCode": {
+          "type": "string",
+          "title": "新设备验证邮件中的验证码",
+          "writeOnly": true,
+          "maxLength": 128
+        }
       }
     }
   }
