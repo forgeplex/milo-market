@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,mkdir,writeFile,copyFile,rm,chmod} from 'node:fs/promises';
+import {mkdtemp,mkdir,writeFile,copyFile,rm,chmod,realpath} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {join,dirname} from 'node:path';
 test('configured launcher forwards the private session, prepares Node PATH and drops host secrets',async()=>{
- const root=await mkdtemp(join(tmpdir(),'bitwarden-configured-launch-'));
+ const root=await realpath(await mkdtemp(join(tmpdir(),'bitwarden-configured-launch-')));
  try{
   const runtime=join(root,'runtime'),state=join(root,'private','cli');
   await mkdir(join(runtime,'node_modules/@bitwarden/mcp-server/dist'),{recursive:true});await mkdir(state,{recursive:true,mode:0o700});
