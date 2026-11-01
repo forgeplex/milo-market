@@ -3,18 +3,19 @@
 通过官方 `@bitwarden/mcp-server@2026.7.0` 和 `@bitwarden/cli@2026.10.1` 使用网站登录项。需要支持插件 configuration schema 的 Milo 版本。旧版本不能使用这套配置表单。
 
 ```text
-安装表单 → 加密 MCP 配置 → 官方 MCP → 官方 CLI → Bitwarden
+解锁密钥表单 → 加密 MCP 配置 → 官方 MCP → 官方 CLI → Bitwarden
 ```
 
 ## 安装前
 
 管理员必须准备 Node.js 22、锁定依赖和本账户 CLI 登录。此版本的 `.mcp.json` 使用 Milo staging 已准备的 `/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.1.1` 运行目录。其他部署必须按其实际路径制作对应包，不能直接复用这些路径。
 
-Bitwarden 使用单个生产服务 `https://bitwarden.pleamon.com`。CLI 必须先配置此地址并完成登录。浏览器扩展的登录状态不会自动传给 CLI。状态目录属于一个 Milo 账户；不要指向其他账户的目录。
+Bitwarden 使用单个生产服务 `https://bitwarden.pleamon.com`。CLI 必须先配置此地址并完成登录。浏览器扩展的登录状态不会自动传给 CLI。状态目录属于一个 Milo 账户。当前包只用于已准备的 staging 测试账户；管理员必须维持该账户的 stdio 许可限制，不能把同一状态目录分配给其他账户。
 
 ## 安装与配置
 
-1. 安装插件时填写 CLI 状态目录和 `BW_SESSION` 解锁会话密钥。不能填写主密码。
+1. 安装插件时只填写 `BW_SESSION` 解锁会话密钥。不能填写主密码。
+   CLI 状态目录由插件运行环境提供，不出现在用户表单。
 2. 安装后进入插件详情，点击“检查连接”来同步工具目录。
 3. 让 Agent 调用 `status`，确认 `serverUrl` 正确且状态为 `unlocked`。
 

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tooling/validate-market.mjs && node --test tooling/categories.test.mjs && node --test plugins/bitwarden/runtime/launch.test.mjs"
+    "test": "node tooling/validate-market.mjs && node --test tooling/categories.test.mjs && node --test plugins/bitwarden/runtime/launch.test.mjs && node --test tooling/bitwarden-config.test.mjs"
   },
   "devDependencies": {
     "ajv": "^8.20.0",
