@@ -10,6 +10,16 @@
       },
       "category": "productivity",
       "version": "0.1.1"
+    },
+    {
+      "name": "bitwarden",
+      "description": "官方 MCP；在插件表单中配置解锁会话。",
+      "source": {
+        "source": "local",
+        "path": "plugins/bitwarden"
+      },
+      "category": "integrations",
+      "version": "0.2.0"
     }
   ],
   "categories": [

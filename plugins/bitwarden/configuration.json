@@ -1,0 +1,26 @@
+{
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "description": "填写解锁会话密钥。不要填写 Bitwarden 主密码。",
+    "required": [
+      "sessionKey"
+    ],
+    "properties": {
+      "sessionKey": {
+        "type": "string",
+        "title": "解锁会话密钥",
+        "description": "使用 bw unlock --raw 得到的 BW_SESSION。私密保存，留空保留；会话失效后需重新解锁。",
+        "writeOnly": true,
+        "minLength": 1
+      }
+    }
+  },
+  "mcp": {
+    "bitwarden": {
+      "env": {
+        "BW_SESSION": "sessionKey"
+      }
+    }
+  }
+}

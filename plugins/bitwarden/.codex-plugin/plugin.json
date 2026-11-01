@@ -1,0 +1,15 @@
+{
+  "name": "bitwarden",
+  "version": "0.2.0",
+  "description": "通过官方 MCP 使用保险库；安装时配置解锁会话密钥。",
+  "author": {
+    "name": "Milo"
+  },
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Bitwarden",
+    "shortDescription": "官方 MCP · 网站登录与保险库工具"
+  },
+  "configuration": "./configuration.json"
+}
