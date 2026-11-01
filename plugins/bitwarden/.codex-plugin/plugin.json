@@ -1,6 +1,6 @@
 {
   "name": "bitwarden",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "通过官方 MCP 使用保险库；安装时配置解锁会话密钥。",
   "author": {
     "name": "Milo"

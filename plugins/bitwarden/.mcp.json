@@ -1,12 +1,11 @@
 {
   "mcpServers": {
     "bitwarden": {
-      "command": "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.1.1/node",
+      "command": "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.2.1/node",
       "args": [
-        "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.1.1/node_modules/@bitwarden/mcp-server/dist/index.js"
+        "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.2.1/launch-configured.mjs"
       ],
       "env": {
-        "BW_CLI_PATH": "/var/lib/milo/workspaces/.bitwarden-mcp-runtime-0.1.1/node_modules/@bitwarden/cli/build/bw.js",
         "BITWARDENCLI_APPDATA_DIR": "/var/lib/milo/workspaces/.bitwarden-mcp-local-user/cli"
       },
       "enabled_tools": [
