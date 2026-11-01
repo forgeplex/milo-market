@@ -19,10 +19,12 @@ Milo 插件入口目前只会自动配置 HTTP MCP；本插件声明的 stdio MC
 官方 MCP 仅提供本地 stdio，不要将它转换成公开 HTTP 服务。上游说明：
 https://github.com/bitwarden/mcp-server
 
+`.mcp.json` 与手动配置都使用 `runtime/launch.mjs`，不经 npx 重新安装依赖。声明中的 `${CLAUDE_PLUGIN_ROOT}` 是插件根目录，`${MILO_BITWARDEN_STATE_DIR}` 是管理员指定的账户私密目录；不支持变量展开的宿主必须先替换为绝对路径。
+
 `runtime/package-lock.json` 固定官方 MCP、CLI 及其依赖；使用 Node.js 22 或更高版本，运行 `npm ci --ignore-scripts --omit=dev` 安装。
 `runtime/launch.mjs` 是一个本地启动入口，不实现或替换 MCP 工具。
 它为一个 Milo 账户使用独立的私密目录，将目录中的 `session` 文件传给官方 MCP，退出时关闭子进程。
-主密码不得保存在插件、参数、环境配置或日志中；会话文件必须为 0600。目录权限为 0700。
+主密码不得保存在插件、参数、环境配置或日志中；会话文件必须为 0600。目录权限为 0700。启动时拒绝权限过宽、其他用户所有或符号链接的状态目录和会话文件。
 
 全局 stdio 配置示例（路径由管理员在实际执行环境中设置）：
 
