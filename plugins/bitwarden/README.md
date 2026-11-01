@@ -1,4 +1,4 @@
-# Bitwarden 0.3.0
+# Bitwarden 0.3.1
 
 使用官方 `@bitwarden/mcp-server@2026.7.0` 和 `@bitwarden/cli@2026.10.1`。需要支持插件连接向导的 Milo 服务。
 
