@@ -10,7 +10,9 @@
         "status",
         "sync",
         "list",
-        "get"
+        "get",
+        "create_item",
+        "edit_item"
       ]
     }
   }

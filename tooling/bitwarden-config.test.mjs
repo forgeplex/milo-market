@@ -12,4 +12,5 @@ test('Bitwarden owns its login form; host owns session and profile paths',async(
  assert.deepEqual(config.connection.input_schema.required,['serverUrl','email','masterPassword']);
  assert.equal(config.connection.input_schema.properties.masterPassword.writeOnly,true);
  assert.deepEqual(mcp.mcpServers.bitwarden.env,{});
+ assert.deepEqual(mcp.mcpServers.bitwarden.enabled_tools,['status','sync','list','get','create_item','edit_item']);
 });
