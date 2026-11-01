@@ -1,0 +1,14 @@
+{
+  "name": "bitwarden",
+  "version": "0.1.0",
+  "description": "通过 Bitwarden 官方 MCP 读取网站登录信息；需要单独连接并解锁保险库。",
+  "author": {
+    "name": "Milo"
+  },
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Bitwarden",
+    "shortDescription": "官方 MCP · 网站登录与保险库工具"
+  }
+}

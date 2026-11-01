@@ -10,6 +10,16 @@
       },
       "category": "productivity",
       "version": "0.1.1"
+    },
+    {
+      "name": "bitwarden",
+      "description": "通过 Bitwarden 官方 MCP 读取网站登录信息；需要单独连接并解锁保险库。",
+      "source": {
+        "source": "local",
+        "path": "plugins/bitwarden"
+      },
+      "category": "integrations",
+      "version": "0.1.0"
     }
   ],
   "categories": [

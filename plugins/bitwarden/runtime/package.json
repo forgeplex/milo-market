@@ -1,0 +1,13 @@
+{
+  "name": "milo-bitwarden-mcp-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@bitwarden/mcp-server": "2026.7.0",
+    "@bitwarden/cli": "2026.10.1"
+  }
+}
