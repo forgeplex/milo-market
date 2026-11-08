@@ -1,11 +1,9 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "github": {
       "type": "streamable-http",
-      "url": "https://api.githubcopilot.com/mcp/",
-      "auth": {
-        "type": "bearer"
-      }
+      "url": "https://api.githubcopilot.com/mcp/"
     }
   }
 }

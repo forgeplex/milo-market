@@ -16,7 +16,7 @@
     "pull-requests"
   ],
   "version": "0.1.0",
-  "mcpServers": "./.mcp.json",
+  "mcpServers": "./milo-mcp.json",
   "interface": {
     "displayName": "GitHub",
     "shortDescription": "查看 GitHub PR、评审意见和 CI 状态"
