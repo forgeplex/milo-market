@@ -20,6 +20,16 @@
       },
       "category": "integrations",
       "version": "0.3.2"
+    },
+    {
+      "name": "github",
+      "description": "通过 GitHub 官方 MCP 查看仓库、PR、评审意见和 CI 状态。",
+      "source": {
+        "source": "local",
+        "path": "plugins/github"
+      },
+      "category": "development",
+      "version": "0.1.0"
     }
   ],
   "categories": [
